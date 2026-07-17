@@ -1,3 +1,4 @@
+
 import streamlit as st
 import replicate
 import os
@@ -6,7 +7,7 @@ import os
 st.set_page_config(page_title="Edición Casera VIP")
 
 st.title("📸 | Edición Casera VIP")
-st.write("### **Tus fotos con estilo natural y real de celular")
+st.write("### **Tus fotos con estilo natural y real de celular**")
 
 # Selector de origen de foto para evitar reinicios en el cel
 opcion = st.radio("¿Cómo quieres subir tu foto?", ("Elegir de mi galería", "Tomar una foto nueva"))
@@ -24,7 +25,7 @@ prompt = st.text_input("¿Cómo quieres la escena?", placeholder="Ej: En la sala
 
 if st.button("⚡ Generar Prueba Gratis"):
     if uploaded_file is not None and prompt:
-        with st.make_spinner("La IA está trabajando..."):
+        with st.spinner("La IA está trabajando..."):
             try:
                 # El modelo ultra-realista de Replicate
                 output = replicate.run(
