@@ -9,7 +9,25 @@ st.title("📸 | Edición Casera VIP")
 st.write("### **Tus fotos con estilo natural y real de celular**")
 
 # Subir la foto del cliente
-uploaded_file = st.file_uploader("Sube tu foto aquí", type=["jpg", "jpeg", "png"])
+import streamlit as st
+
+st.title("📸 | Edición Casera VIP")
+
+# Creamos una opción para que elija cómo quiere subir la foto
+opcion = st.radio("¿Cómo quieres subir tu foto?", ("Elegir de mi galería", "Tomar una foto nueva"))
+
+foto = None
+
+if opcion == "Elegir de mi galería":
+    # El file_uploader para elegir archivos
+    foto = st.file_uploader("Sube tu foto de la galería", type=['jpg', 'jpeg', 'png'])
+else:
+    # La cámara para tomar una foto nueva
+    foto = st.camera_input("Tómate una foto")
+
+# Si hay una foto, la mostramos
+if foto is not None:
+    st.image(foto, caption="Foto lista para procesar")
 prompt = st.text_input("¿Cómo quieres la escena?", placeholder="Ej: En la sala con playera gris...")
 
 if st.button("⚡ Generar Prueba Gratis", type="primary"):
